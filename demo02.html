@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<span v-bind:title="message">
+			这是一个绑定数据的测试
+		</span>
+	</div>
+	<script src="script/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{
+				message:"绑定title的内容"
+			}
+		})
+	</script>
+</body>
+</html>
