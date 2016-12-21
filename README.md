@@ -7,3 +7,7 @@
 * demo06:绑定数据
 * demo07:组件
 * demo08:组件列表
+* demo09:组件扩展
+* demo10:vue实例
+* demo11:vue的生命周期
+* demo12:数据绑定
