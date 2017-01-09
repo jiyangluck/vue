@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="prop in person">
+				{{prop}}
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="(value,key,index) in person">
+				{{value}},{{key}},{{index}}
+			</li>
+		</ul>
+	</div>
+
+	<script src="script/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				person:{
+					name:'xiaoming',
+					age:12,
+					sex:'male'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
