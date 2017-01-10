@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 设置v-once只有第一次绑定数据，以后不会随数据改变而改变 -->
+		<div v-once>
+			<p>{{message1}}</p>
+			<input type="text" v-model="message1">
+		</div>
+		<div>
+			<p>{{message2}}</p>
+			<input type="text" v-model="message2">
+		</div>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{
+				message1:"hello message1",
+				message2:"hello message2"
+			}
+		})
+	</script>
+</body>
+</html>

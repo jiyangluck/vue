@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<hello my-message="hello world"></hello>
+		<!-- 驼峰转变成横线 -->
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component('hello',{
+			props:['myMessage'],  //定义组件的属性
+			template:'<span>{{myMessage}}</span>'
+		})
+
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

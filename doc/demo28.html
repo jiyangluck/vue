@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../style/bootstrap.css">
+</head>
+<body>
+	
+	<div id="app">
+		<h3>合计:{{total}}</h3>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<th class="col-md-3">名称</th>
+				<th class="col-md-3">单价</th>
+				<th class="col-md-3">数量</th>
+				<th class="col-md-3">总价</th>
+			</thead>
+			<tbody>
+				<tr v-for="(value,index) in goods">
+					<td>{{value.name}}</td>
+					<td>{{value.price}}</td>
+					<td>
+						<button v-on:click="add(index)">+</button>
+						<span>{{value.count}}</span>
+						<button v-on:click="sub(index)">-</button>
+					</td>
+					<td>
+						{{(value.count * value.price).toFixed(2)}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		//商品列表
+		//商品名称，单价，数量
+		//总价
+
+		new Vue({
+			el:'#app',
+			data:{
+				goods:[
+					{name:'香蕉',price:1.5,count:0},
+					{name:'苹果',price:2.1,count:0},
+					{name:'鸭梨',price:3.2,count:0}
+				],
+				total:0
+			},
+			methods:{
+				add:function(ind){
+					this.goods[ind].count++;
+					this.getTotal();
+				},
+				sub:function(ind){
+					if(this.goods[ind].count>0){
+						this.goods[ind].count--;
+					}
+					this.getTotal();
+				},
+				getTotal:function(){
+					var init = this;
+					init.total = 0;
+					this.goods.map(function(val,ind){
+						var price = val.price * val.count;
+						init.total += price;
+					})
+					init.total = (init.total).toFixed(2)
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

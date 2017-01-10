@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="txt">
+		<hello v-bind:mess="txt"></hello>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component('hello',{
+			props:['mess'],
+			template:'<span>{{mess}}</span>'
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				txt:''
+			}
+		})
+	</script>
+</body>
+</html>

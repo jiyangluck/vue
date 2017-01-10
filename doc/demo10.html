@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script src="../script/vue.js"></script>
+	<script>
+		var obj = {name:"小明"}
+		var app = new Vue({
+			data:obj
+		})
+
+		//vue的实例会代理其中data对象里面的属性。
+		app.name = "小红";
+		console.log(obj.name);
+
+
+
+
+	</script>
+</body>
+</html>

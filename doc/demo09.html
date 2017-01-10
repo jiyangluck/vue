@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<mytitle content="文档内容"></mytitle>
+		<ul>
+			<list-item v-for="text in texts" v-bind:list="text"></list-item>
+		</ul>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component("mytitle",{
+			props:["content"],
+			template:"<h1>{{content}}</h1>"
+		})
+
+		Vue.component("list-item",{
+			props:["list"],
+			template:"<li>{{list}}</li>"
+		})
+
+		var app = new Vue({
+			el:"#app",
+			data:{
+				texts:[
+					"2017年vue会更加受欢迎",
+					"因为简介的使用方法",
+					"并且还是优秀的国产框架"
+				]
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<child>
+			<p slot="test">{{mess}}</p>
+		</child>
+	</div>
+
+	<script src='../script/vue.js'></script>
+	<script>
+		Vue.component('child',{
+			template:'<div>\
+						<h1>内容分发测试</h1>\
+						<slot name="test"></slot>\
+					  </div>'
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				mess:'hello world'
+			}
+		})
+	</script>
+</body>
+</html>

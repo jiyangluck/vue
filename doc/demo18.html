@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<count></count>
+		<count></count>
+		<count></count>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		var data = {number:0}
+		Vue.component('count',{
+			template:'<button @click="add">{{number}}</button>',
+			//不同作用域
+			// data:function(){
+			// 	return {
+			// 		number:0
+			// 	}
+			// },
+			//相同作用域
+			data:function(){
+				return data;
+			},
+			methods:{
+				add:function(){
+					this.number += 1;
+				}
+			}
+		})
+
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

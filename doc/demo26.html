@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		{{fruits}}
+		<my-button v-on:x="addFruit"></my-button>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		
+		Vue.component('my-button',{
+			template:'<div>\
+						<button v-on:click="add">按钮</button>\
+					  </div>',
+			methods:{
+				add:function(){
+					this.$emit('x');
+				}
+			}
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				fruits:['香蕉','苹果','鸭梨']
+			},
+			methods:{
+				addFruit:function(){
+					console.log('xixi');
+					this.fruits.push('西瓜');
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

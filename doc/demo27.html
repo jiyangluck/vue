@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<my-form v-on:addlist="addList"></my-form>
+		<ul>
+			<li
+				is="mylist"
+				v-for="(list,index) in lists"
+				v-on:removeList="remove(index)"
+				v-bind:title="list"
+			></li>
+		</ul>
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+	
+		Vue.component('mylist',{
+			template:'<li>\
+						{{title}}\
+						<button v-on:click="remove">删除</button>\
+					  </li>',
+			props:['title'],
+			methods:{
+				remove:function(){
+
+					this.$emit('removelist');
+				}
+			}
+		})
+		//问题：表单的文本框内容无法传到组件外部
+		Vue.component('my-form',{
+			template:'<form v-on:submit.prevent="add">\
+						<input type=text v-model="note">\
+						<input type=submit value="添加">\
+					  </form>',
+			data:function(){
+				return {
+					note:''
+				}
+			},
+			methods:{
+				add:function(){
+					this.$emit('addlist',this.note);
+				}
+			}
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				lists:[
+					"1月10日计划",
+					"1月11日计划",
+					"1月12日计划"
+				]
+			},
+			methods:{
+				remove:function(index){
+					console.log(index)
+					this.lists.splice(index,1)
+				},
+				addList:function(note){
+					this.lists.push(note);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

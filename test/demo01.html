@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="app">
+		<input type="text" v-bind:value="txt" v-model='txt'>
+		<p>{{txt}}</p>
+
+		<my-input v-on:ftrans="show"></my-input>
+	</div>
+	
+
+	<script src="../script/vue.js"></script>
+	<script>
+		
+		Vue.component('my-input',{
+			template:'<div>\
+						<input type=text v-model="txt">\
+						<button v-on:click="trans">传递</button>\
+					  </div>',
+			data:function(){
+				return {
+					txt:"hello world"
+				}
+			},
+			methods:{
+				trans:function(){
+					this.$emit('ftrans',this.txt)
+				}
+			}
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				txt:'hehe'
+			},
+			methods:{
+				show:function(str){
+					alert(str+'abc');
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

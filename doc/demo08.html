@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<list-li v-for="student in students" v-bind:data="student"></list-li>
+		</ul>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		Vue.component("list-li",{
+			props:["data"],
+			template:"<li>{{data}}</li>"
+		})
+
+		var app = new Vue({
+			el:"#app",
+			data:{
+				students:["小明","韩梅梅","李雷"]
+			}
+		})
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="app">
+		
+		<div>
+			<input type="text" v-model="mess">
+			<span>{{mess}}</span>
+		</div>
+
+		<div>
+			<input type="checkbox" v-model="friends" id="xiaoming" value="xiaoming">
+			<label for="xiaoming">xiaoming</label>
+			<input type="checkbox" v-model="friends" id="xiaohong" value="xiaohong">
+			<label for="xiaohong">xiaohong</label>
+			<input type="checkbox" v-model="friends" id="xiaoliang" value="xiaoliang">
+			<label for="xiaoliang">xiaoliang</label>
+			<p>我的朋友是:{{friends}}</p>
+		</div>
+
+		<div>
+			<input type="radio" id="male" value="男" v-model="sex">
+			<label for="male">男</label>
+			<input type="radio" id="female" value="女" v-model="sex">
+			<label for="female">女</label>
+			<p>请选择性别：{{sex}}</p>
+		</div>
+
+	</div>
+
+	<script src="../script/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				mess:'',
+				friends:[],
+				sex:''
+			}
+		})
+	</script>
+</body>
+</html>
