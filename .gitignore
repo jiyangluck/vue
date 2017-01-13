@@ -1,0 +1,7 @@
+node_modules/
+build
+.DS_Store
+*.tgz
+my-app*
+.idea/
+template/src/__tests__/__snapshots__/
