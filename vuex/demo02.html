@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="sub">-</button>
+		<span>{{count}}</span>
+		<button v-on:click="add">+</button>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script src="../script/vuex.js"></script>
+	<script>
+		const store = new Vuex.Store({
+			state:{
+				count:0
+			},
+			mutations:{
+				add:state => state.count++,
+				sub:state => state.count--
+			}
+		})
+
+		const app = new Vue({
+			el:'#app',
+			computed:{
+				count(){
+					return store.state.count
+				}
+			},
+			methods:{
+				add(){
+					store.commit('add');
+				},
+				sub(){
+					store.commit('sub');
+				}
+			}
+		})
+	</script>
+</body>
+</html>
