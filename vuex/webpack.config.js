@@ -1,7 +1,7 @@
 module.exports = {
-    entry: './src/main.js',
+    entry: './main.js',
     output: {
-        filename: './dist/bundle.js'
+        filename: './bundle.js'
     },
     module: {
         loaders: [{
@@ -11,8 +11,8 @@ module.exports = {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
-            query: {
-                presets: ['es2015']
+            query:{
+                presets:['es2015']
             }
         }]
     },
@@ -22,6 +22,7 @@ module.exports = {
             css: 'vue-style!css'
         }
     },
+    //https://vuejs.org/v2/guide/installation.html#Standalone-vs-Runtime-only-Build
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.common.js'
