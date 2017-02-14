@@ -12,3 +12,25 @@
 
 ## 开发所需插件
 * vue文件高亮：vue-syntax-highlight
+
+## 待完成案例
+* 服务器渲染
+* vue-resource
+* 项目部署与优化-webpack
+* 样式scss
+* vue插件
+* 异步vuex action
+* 购物车
+* 记忆游戏
+* vuex todo
+
+## 其他案例
+* stream
+* flex布局
+* canvas
+* echarts
+* 文件上传
+* mongoose
+* mongodb集合关系
+* node缓存和性能问题
+* html5本地存储
