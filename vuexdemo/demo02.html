@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<h1>{{count}}</h1>
+		<mess></mess>
+		<btn></btn>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script src="../script/vuex.js"></script>
+	<script>
+		Vue.component('btn',{
+			template:"<button v-on:click='addCount'>test</button>",
+			methods:{
+				addCount:function(){
+					store.commit('add');
+					console.log(store.state.count)
+				}
+			}
+		})
+
+
+		Vue.component('mess',{
+			template:"<h1>{{text}}</h1>",
+			//组件可以用computed获取store中的state
+			computed:{
+				text:function(){
+					return store.state.count
+				}
+			}
+		})
+
+		const store = new Vuex.Store({
+			state:{
+				count:0
+			},
+			mutations:{
+				add:function(state){
+					state.count++
+				}
+			}
+		})
+
+
+		new Vue({
+			el:'#app',
+			computed:{
+				count:function(){
+					return store.state.count
+				}
+			}
+		})
+	</script>
+</body>
+</html>
