@@ -1,7 +1,12 @@
+var path = require('path')
+var webpack = require('webpack')
+
 module.exports = {
     entry: './main.js',
     output: {
-        filename: './bundle.js'
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/dist/',
+        filename: 'build.js'
     },
     module: {
         loaders: [{
@@ -9,23 +14,47 @@ module.exports = {
             loader: 'vue-loader'
         }, {
             test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
-            query:{
-                presets:['es2015']
+            exclude: /node_modules/
+        }, {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader'
+        }, {
+            test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+            loader: 'file-loader'
+        }, {
+            test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+            loader: 'file-loader',
+            query: {
+                name: '[name].[ext]?[hash]'
             }
         }]
     },
-    vue: {
-        loaders: {
-            js: 'babel?{"presets":["es2015"]}',
-            css: 'vue-style!css'
-        }
-    },
-    //https://vuejs.org/v2/guide/installation.html#Standalone-vs-Runtime-only-Build
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.common.js'
         }
-    }
+    },
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true
+    },
+    devtool: '#eval-source-map'
+}
+
+if (process.env.NODE_ENV === 'production') {
+    module.exports.devtool = '#source-map'
+        // http://vue-loader.vuejs.org/en/workflow/production.html
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ])
 }
