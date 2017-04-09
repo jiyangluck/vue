@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*fade-enter-active 和fade-enter调换顺序会有问题*/
+
+		/*进入过渡的结束状态*/
+		.fade-enter-active {
+			transition: opacity 3s,transform 3s;
+			transform: translateX(200px);
+		}
+		/*进入过渡的开始状态*/
+		.fade-enter {
+			transform: translateX(-100px);
+			opacity: 0
+		}
+		/*离开过渡的开始状态*/
+		.fade-leave{
+			transform: translateX(-100px);
+		}
+
+		/*离开过渡的结束状态*/
+		.fade-leave-active{
+			transition: opacity 3s,transform 3s;
+			transform: translateX(200px);
+			opacity: 0
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="show=!show">切换</button>
+		<br>
+		<transition name="fade">
+			<img src="../images/1.jpg" v-if="show">
+		</transition>
+	</div>
+	<script src="../script/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				show:true
+			}
+		})
+	</script>
+</body>
+</html>

@@ -28,6 +28,9 @@
 * demo27:简易todo-list
 * demo28:简易购物车，计算总价【完成，总价计算不理想,非组件化】
 * demo29:vuex测试
+* demo30:过渡效果-切换显示和隐藏<transition></transition>
+* demo31:<transition></transition>用于组件中并添加路由
+* demo32:过渡效果javascript钩子
 
 # 概念
 * v-开头的称作vue的指令
